@@ -1,0 +1,24 @@
+import math
+
+class Estadistica:
+
+    def __init__(self, datos):
+        self.__datos = datos
+
+    def promedio(self):
+        return sum(self.__datos) / len(self.__datos)
+
+    def desviacion(self):
+        prom = self.promedio()
+        suma = sum((x - prom) ** 2 for x in self.__datos)
+        return math.sqrt(suma / (len(self.__datos) - 1))
+
+
+if __name__ == "__main__":
+
+    numeros = list(map(float, input("Ingrese 10 numeros: ").split()))
+
+    estadistica = Estadistica(numeros)
+
+    print("El promedio es", estadistica.promedio())
+    print("La desviacion es", estadistica.desviacion())
